@@ -23,13 +23,13 @@ class KnowledgeBase(object):
         Args:
             fact (Fact or Rule): Fact or Rule we're asserting in the format produced by read.py
         """
-        if (fact.name != 'fact'): error('You are supposed to input a fact')
-        b = True
-        for element in self.facts:
-            if (fact == element): b = False
-        if (b):
-            self.facts.append(fact)
-            print("Asserting {!r}".format(fact))
+        if (fact.name == 'fact'):
+          b = True
+          for element in self.facts:
+              if (fact == element): b = False
+          if (b):
+              self.facts.append(fact)
+              print("Asserting {!r}".format(fact))
         
     def kb_ask(self, fact):
         """Ask if a fact is in the KB
