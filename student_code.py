@@ -27,8 +27,9 @@ class KnowledgeBase(object):
         b = True
         for element in self.facts:
             if (fact == element): b = False
-        if (b == True): self.facts.append(fact)
-        print("Asserting {!r}".format(fact))
+        if (b):
+            self.facts.append(fact)
+            print("Asserting {!r}".format(fact))
         
     def kb_ask(self, fact):
         """Ask if a fact is in the KB
@@ -39,6 +40,7 @@ class KnowledgeBase(object):
         Returns:
             ListOfBindings|False - ListOfBindings if result found, False otherwise
         """
+        print("Asking {!r}".format(fact))
         B = ListOfBindings()
         for element in self.facts:
             b = match(element.statement, fact.statement)
@@ -46,4 +48,4 @@ class KnowledgeBase(object):
                   B.add_bindings(b, facts_rules=[])
         if (len(B) == 0): return False
         return B
-        print("Asking {!r}".format(fact))
+
